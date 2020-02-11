@@ -10,8 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import com.pundo.mvvm.MainActivity;
 import com.pundo.mvvm.R;
 import com.pundo.mvvm.models.NewPlace;
 import com.squareup.picasso.Picasso;
@@ -21,8 +20,15 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    List<NewPlace> newPlaces = new ArrayList<>();
+    List<NewPlace> mnewPlaces = new ArrayList<>();
     Context context;
+
+    public RecyclerAdapter(MainActivity mainActivity, ArrayList<NewPlace> newPlaces) {
+        context = mainActivity;
+        mnewPlaces = newPlaces;
+    }
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,13 +39,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.name.setText(newPlaces.get(position).getName());
-        Picasso.get().load(newPlaces.get(position).getImgURL()).into(holder.imageView);
+        holder.name.setText(mnewPlaces.get(position).getName());
+        Picasso.get().load(mnewPlaces.get(position).getImgURL()).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return newPlaces.size();
+        return mnewPlaces.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

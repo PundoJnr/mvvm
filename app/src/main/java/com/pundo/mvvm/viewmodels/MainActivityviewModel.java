@@ -15,7 +15,7 @@ public class MainActivityviewModel extends ViewModel {
     private NewPlacesRepository mRepo;
     public void init(){
         if (mNewPlace != null){
-            return
+            return;
         }
         mRepo = NewPlacesRepository.getInstance();
         mNewPlace = mRepo.getNewPlace();

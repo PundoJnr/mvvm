@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
 
         mainActivityviewModel = ViewModelProviders.of(this).get(MainActivityviewModel.class);
-
+        mainActivityviewModel.init();
         mainActivityviewModel.getNewPlace().observe(this, new Observer<List<NewPlace>>() {
             @Override
             public void onChanged(List<NewPlace> newPlaces) {
